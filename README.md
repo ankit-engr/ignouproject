@@ -1,6 +1,10 @@
-# ProjectFlow 🚀
+# FlowTrack — An Agile-Oriented Full-Stack Project and Task Management System
 
 A full-stack project management tool with JWT authentication, project tracking, and task management.
+
+**Developer:** Ankit Singh  
+**Programme:** IGNOU BCA (Course Code: BCSP-064)  
+**Enrollment:** 2252096267  
 
 **Stack:** Django REST Framework · PostgreSQL/SQLite · React · TypeScript · MUI · Zustand
 
@@ -8,14 +12,18 @@ A full-stack project management tool with JWT authentication, project tracking, 
 
 ## Features
 
+- **Roles** — Admin, Project Leader, Project Manager, Team Member
+- **Task Assignment** — assign tasks to team members by role
+- **Deadlines & Progress** — project deadlines, task due dates, overdue flags, progress %
+- **Reports** — workload by assignee, overdue tasks, role counts, project progress
 - **JWT Authentication** — register, login, token refresh, bcrypt-hashed passwords
 - **Projects** — create, update, delete; search by title/description; filter by status; pagination
-- **Tasks** — CRUD within projects; kanban-style board (todo / in-progress / done); filter by status; due date tracking
+- **Tasks** — CRUD within projects; kanban-style board (todo / in-progress / done); filter by status
 - **Form Validation** — React Hook Form + Yup on frontend; Django validators on backend
 - **State Management** — Zustand for auth state
-- **Unit Tests** — 22 Django tests covering auth, projects, tasks, permissions
+- **Unit Tests** — Django tests covering auth, projects, tasks, permissions
 - **Docker Support** — one-command startup with PostgreSQL
-- **Seed Script** — demo users + sample projects + tasks
+- **Seed Script** — demo users with roles + assigned tasks + deadlines
 
 ---
 
@@ -102,10 +110,13 @@ python seed.py
 
 **Demo credentials:**
 
-| Email               | Password     |
-|---------------------|--------------|
-| demo@example.com    | Demo1234!    |
-| alice@example.com   | Alice1234!   |
+| Role            | Name         | Email                         | Password   |
+|-----------------|--------------|-------------------------------|------------|
+| Admin           | Ankit Singh  | ankit.singh@flowtrack.in      | Ankit@123  |
+| Project Leader  | Rahul Mehta  | rahul.mehta@flowtrack.in      | Rahul@123  |
+| Project Manager | Sneha Patil  | sneha.patil@flowtrack.in      | Sneha@123  |
+| Team Member     | Amit Yadav   | amit.yadav@flowtrack.in       | Amit@123   |
+| Team Member     | Neha Gupta   | neha.gupta@flowtrack.in       | Neha@123   |
 
 ---
 
@@ -181,7 +192,7 @@ python manage.py test tests --verbosity=2
 ## Project Structure
 
 ```
-projectflow/
+flowtrack/
 ├── backend/
 │   ├── config/              # Django settings, URLs
 │   ├── users/               # Custom User model, JWT auth views

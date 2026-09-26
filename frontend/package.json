@@ -2,6 +2,8 @@
   "name": "frontend",
   "version": "0.1.0",
   "private": true,
+  "author": "Ankit Singh",
+  "description": "FlowTrack — An Agile-Oriented Full-Stack Project and Task Management System. IGNOU BCA (BCSP-064) by Ankit Singh",
   "dependencies": {
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.1",

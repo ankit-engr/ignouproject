@@ -9,14 +9,14 @@ dist/
 build/
 venv/
 env/
-.env
 *.sqlite3
 
 # Node
 node_modules/
 .npm
 frontend/build/
-frontend/.env
+
+# Note: .env included for IGNOU project submission (demo credentials only)
 
 # IDE
 .vscode/

@@ -1,5 +1,9 @@
 #!/usr/bin/env python
-"""Django's command-line utility for administrative tasks."""
+"""Django's command-line utility for administrative tasks.
+
+FlowTrack — An Agile-Oriented Full-Stack Project and Task Management System
+IGNOU BCA (BCSP-064) | Developer: Ankit Singh | Enrollment: 2252096267
+"""
 import os
 import sys
 

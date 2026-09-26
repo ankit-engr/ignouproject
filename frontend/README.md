@@ -1,6 +1,9 @@
-# Getting Started with Create React App
+# FlowTrack Frontend
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+**FlowTrack — An Agile-Oriented Full-Stack Project and Task Management System**  
+**Developer:** Ankit Singh · IGNOU BCA (BCSP-064)
+
+React + TypeScript UI for FlowTrack. See the root [README](../README.md) for full setup.
 
 ## Available Scripts
 

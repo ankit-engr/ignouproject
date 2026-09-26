@@ -21,42 +21,51 @@ try:
     from datetime import date, timedelta
 
     if not User.objects.exists():
-        users_data = [
-            {'email': 'demo@example.com', 'password': 'Demo1234!', 'first_name': 'Demo', 'last_name': 'User'},
-            {'email': 'alice@example.com', 'password': 'Alice1234!', 'first_name': 'Alice', 'last_name': 'Smith'},
-        ]
-        created_users = []
-        for ud in users_data:
-            user, _ = User.objects.get_or_create(email=ud['email'])
-            user.set_password(ud['password'])
-            user.first_name = ud['first_name']
-            user.last_name = ud['last_name']
-            user.save()
-            created_users.append(user)
-
-        demo_user = created_users[0]
         today = date.today()
-        projects_data = [
-            {'title': 'Website Redesign', 'description': 'Complete overhaul of company website.', 'status': 'active'},
-            {'title': 'Mobile App v2', 'description': 'Second version with new features.', 'status': 'active'},
-            {'title': 'Q4 Marketing Campaign', 'description': 'End-of-year marketing push.', 'status': 'completed'},
-        ]
-        tasks_tmpl = [
-            {'title': 'Initial planning & requirements', 'status': 'done', 'due_date': today - timedelta(days=14), 'description': 'Gather all requirements.'},
-            {'title': 'Design mockups', 'status': 'in-progress', 'due_date': today + timedelta(days=3), 'description': 'Create wireframes and mockups.'},
-            {'title': 'Development sprint 1', 'status': 'todo', 'due_date': today + timedelta(days=10), 'description': 'Implement core features.'},
-            {'title': 'QA Testing', 'status': 'todo', 'due_date': today + timedelta(days=20), 'description': 'Full regression testing.'},
-        ]
-        for pd in projects_data:
-            project, _ = Project.objects.get_or_create(
-                title=pd['title'], owner=demo_user,
-                defaults={'description': pd['description'], 'status': pd['status']}
-            )
-            for td in tasks_tmpl:
-                Task.objects.get_or_create(
-                    title=td['title'], project=project,
-                    defaults={k: v for k, v in td.items() if k != 'title'}
-                )
+        rahul = User.objects.create_user(
+            email='rahul.mehta@flowtrack.in',
+            password='Rahul@123',
+            first_name='Rahul',
+            last_name='Mehta',
+            role=User.ROLE_PROJECT_LEADER,
+        )
+        sneha = User.objects.create_user(
+            email='sneha.patil@flowtrack.in',
+            password='Sneha@123',
+            first_name='Sneha',
+            last_name='Patil',
+            role=User.ROLE_PROJECT_MANAGER,
+        )
+        amit = User.objects.create_user(
+            email='amit.yadav@flowtrack.in',
+            password='Amit@123',
+            first_name='Amit',
+            last_name='Yadav',
+            role=User.ROLE_TEAM_MEMBER,
+        )
+        project = Project.objects.create(
+            owner=rahul,
+            title='DigiNagar Municipal Portal',
+            description='Citizen services portal for Delhi NCR under Digital India.',
+            status='active',
+            deadline=today + timedelta(days=30),
+        )
+        Task.objects.create(
+            project=project,
+            title='Aadhaar eKYC integration',
+            status='todo',
+            due_date=today + timedelta(days=10),
+            description='UIDAI eKYC sandbox integration.',
+            assignee=amit,
+        )
+        Task.objects.create(
+            project=project,
+            title='Hindi–English bilingual UI',
+            status='in-progress',
+            due_date=today + timedelta(days=3),
+            description='Citizen forms with Devanagari support.',
+            assignee=sneha,
+        )
 except Exception:
     pass
 

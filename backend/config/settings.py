@@ -3,6 +3,9 @@ from decouple import config
 from datetime import timedelta
 import dj_database_url
 
+# FlowTrack — An Agile-Oriented Full-Stack Project and Task Management System
+# IGNOU BCA (BCSP-064) | Developer: Ankit Singh | Enrollment: 2252096267
+
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = config('SECRET_KEY', default='django-insecure-change-me-in-production-xyz123')

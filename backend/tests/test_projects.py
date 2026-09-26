@@ -8,8 +8,12 @@ from projects.models import Project, Task
 class ProjectTests(TestCase):
     def setUp(self):
         self.client = APIClient()
-        self.user = User.objects.create_user(email='user@example.com', password='Test1234!')
-        self.other = User.objects.create_user(email='other@example.com', password='Test1234!')
+        self.user = User.objects.create_user(
+            email='user@example.com', password='Test1234!', role=User.ROLE_PROJECT_LEADER
+        )
+        self.other = User.objects.create_user(
+            email='other@example.com', password='Test1234!', role=User.ROLE_PROJECT_MANAGER
+        )
         self.client.force_authenticate(user=self.user)
 
     def test_create_project(self):
@@ -66,7 +70,9 @@ class ProjectTests(TestCase):
 class TaskTests(TestCase):
     def setUp(self):
         self.client = APIClient()
-        self.user = User.objects.create_user(email='user@example.com', password='Test1234!')
+        self.user = User.objects.create_user(
+            email='user@example.com', password='Test1234!', role=User.ROLE_PROJECT_MANAGER
+        )
         self.client.force_authenticate(user=self.user)
         self.project = Project.objects.create(owner=self.user, title='Project', status='active')
 
